@@ -14,8 +14,8 @@ class automata:
         cadena_valida = cadena_valida_
         
         for symbol in cadena_valida:
-            lista.append(self.transicion[self.estados.index(start)][self.alphabet.index(symbol)])
-            start = self.transicion[self.estados.index(start)][self.alphabet.index(symbol)]
+            lista.append(self.transicion[self.estados.index(start)][self.alfabeto.index(symbol)])
+            start = self.transicion[self.estados.index(start)][self.alfabeto.index(symbol)]
             
         for final in self.estado_final:
             if (lista[-1]--final):
