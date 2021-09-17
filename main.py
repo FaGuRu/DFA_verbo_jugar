@@ -12,12 +12,15 @@ window.title("DFA verbo jugar")
 window.geometry("800x600")
 window.resizable(False, False)
 window.config(bg="#A6D6D6")
-# Creación del Frame delárbol
+# Creación del Frame del grafo
 frame = Frame(window)
 frame.place(x=70, y=125)
 frame.config(bg="#126e82", borderwidth=5, relief="raised")
 frame.config(width=650, height=382)
-
+#Imagen del grafo
+diagrama_img = tkinter.PhotoImage(file="source/grafo_frame.png")
+diagrama_button = tkinter.Label(
+    window, image=diagrama_img, borderwidth=0, bg="#126e82").place(x=70, y=125, width=650, height=382)
 # Crear caja de texto.
 entry = ttk.Entry(window,font=('Lucida Console', 10))
 # Posicionarla en la ventana.
