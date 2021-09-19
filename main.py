@@ -1,10 +1,10 @@
 from tkinter import *
-from automata.fa.dfa import DFA
 import tkinter.filedialog
 from tkinter.constants import END
 from tkinter import filedialog
 from tkinter import Frame, Toplevel, ttk
 from typing import Text
+from automata import automata as aut
 
 # Creación de la ventana
 window = tkinter.Tk()
@@ -33,28 +33,17 @@ entry.insert(0,cadena)
 
 #Funciones
 def get_cadena():
-    #print(entry.get())
-    dfa = DFA(
-    states = {'q0','q1','q2','q3'},
-    input_symbols = {'0','1'},
-    transitions = {
-        'q0':{'0':'q3','1':'q1'},
-        'q1':{'0':'q2','1':'q1'},
-        'q2':{'0':'q2','1':'q1'},
-        'q3':{'0':'q3','1':'q3'},
-    },
-    initial_state = 'q0',
-    final_states= {'q2'}
-)
-    #print("esta es la cadena = "+ entry.get())
-    if(dfa.accepts_input(entry.get())):
-        print('Cadena valida')
-        cadena_label = tkinter.Label(window, text="Cadena Valida", font=(
-        'Lucida Console', 15), bg="#A6D6D6").place(x=300, y=550)
+    print(entry.get())
+    automataObj=aut()
+    print(automataObj.get_automata(entry.get()))
+    if(automataObj.get_automata(entry.get())==True):
+        datos_label = tkinter.Label(
+    window, text="Cadena Valida", font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
     else:
-        print('Cadena no valida')
-        cadena_label = tkinter.Label(window, text="Cadena no valida", font=(
-        'Lucida Console', 15), bg="#A6D6D6").place(x=300, y=550)
+        datos_label_2 = tkinter.Label(
+    window, text="Cadena no Valida", font=('Impact', 14), bg="#A6D6D6").place(x=320, y=510)
+        
+    
 
 #Labels y botones
 datos_label = tkinter.Label(
