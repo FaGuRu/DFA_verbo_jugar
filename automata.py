@@ -12,18 +12,22 @@ class automata:
         entrada = open("entrada.txt", "r")
         line = entrada.readline()
         auxS = line[line.find('{')+1:line.find('}')]
+        auxS=auxS.replace(' ','')
         S=auxS.split(',')
         line = entrada.readline()
         auxQ = line[line.find('{')+1:line.find('}')]
+        auxQ=auxQ.replace(' ','')
         Q=auxQ.split(',')
         line = entrada.readline()
         auxF = line[line.find('{')+1:line.find('}')]
+        auxF=auxF.replace(' ','')
         F=auxF.split(',')
         line = entrada.readline()
         #print(line)
         auxD = line[line.find('{')+1:line.find(')}')]
         auxD=auxD.replace('),(',';')
         auxD=auxD.replace('(','')
+        auxD=auxD.replace(' ','')
         auxArrayD=auxD.split(';')
         print(auxArrayD)
         if ',{' in auxD: #Metodo AFD
@@ -57,7 +61,7 @@ class automata:
             symbol = cadena[0:1]
             # print(symbol)
             # print(cadena)
-            # print(D)
+            print(D)
             if(actualState, symbol) in D:
                 new_cadena = cadena[1:]
                 #print(new_cadena)
@@ -70,8 +74,8 @@ class automata:
 
 
 def main():
-    pilin = automata()
-    print(pilin.beginValidate('1001'))
+    # pilin = automata()
+    # #print(pilin.beginValidate('1001'))
 
 
 if __name__ == "__main__":
