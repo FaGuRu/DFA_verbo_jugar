@@ -1,63 +1,78 @@
 class automata:
-    num_estados = 0
-    estados = ['q0','q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15','q16','q17','q18','q19','q20','q21','q22','q23','q24','q25','q26','q27','q28','q29']
-    cardinalidad = []
-    alfabeto = ['a','á','b','e','é','g','i','í','m','n','o','ó','r','s','t']
-    estado_inicial = "q0"
-    estado_final = ['q6','q7','q9','q11','q14','q18','q21','q23','q25','q26','q27','q28']
-    transicion = [['q29','q29','q29','q29','q29','q1','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q2','q29','q29'],              
-                ['q29','q29','q29','q29','q29','q29','q3','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q4'],
-                ['q7','q8','q29','q5','q6','q29','q29','q29','q29','q29','q6','q6','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q9','q29','q10','q29','q9','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q13','q29','q29','q29','q29','q29','q10','q9','q29','q29','q12','q11','q29'],
-                ['q29','q29','q16','q29','q29','q29','q29','q29','q29','q29','q29','q29','q15','q14','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q17','q29','q29','q29','q29'],
-                ['q29','q29','q29','q18','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q19'],
-                ['q18','q29','q29','q21','q23','q29','q29','q20','q29','q29','q22','q29','q29','q29','q29'],
-                ['q18','q18','q29','q29','q29','q29','q29','q29','q29','q29','q22','q29','q29','q29','q29'],
-                ['q29','q29','q29','q24','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q24','q29','q29','q24','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q24','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q25','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q26','q29','q29','q29','q27','q29'],
-                ['q29','q29','q29','q23','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q21','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q10','q26','q29','q29','q29','q27','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q28','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q10','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29'],
-                ['q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29','q29']
-                ]
-    
-    def get_automata(self,cadena_valida_):
-        valido = False
-        lista = []
-        start = self.estados[0]
-        cadena_valida = cadena_valida_
-        
-        for symbol in cadena_valida:
-            lista.append(self.transicion[self.estados.index(start)][self.alfabeto.index(symbol)])
-            start = self.transicion[self.estados.index(start)][self.alfabeto.index(symbol)]
-            
-        for final in self.estado_final:
-            if (lista[-1]==final):
-                valido = True
-        
-        return valido
 
-  
+    S = []
+    Q = []
+    F = []
+    q0=""
+    D = {}
+
+    def beginValidate(self,cadena):
+        global Q,S,F,q0,D
+        D = {}
+        entrada = open("entrada.txt", "r")
+        line = entrada.readline()
+        auxS = line[line.find('{')+1:line.find('}')]
+        S=auxS.split(',')
+        line = entrada.readline()
+        auxQ = line[line.find('{')+1:line.find('}')]
+        Q=auxQ.split(',')
+        line = entrada.readline()
+        auxF = line[line.find('{')+1:line.find('}')]
+        F=auxF.split(',')
+        line = entrada.readline()
+        #print(line)
+        auxD = line[line.find('{')+1:line.find(')}')]
+        auxD=auxD.replace('),(',';')
+        auxD=auxD.replace('(','')
+        auxArrayD=auxD.split(';')
+        print(auxArrayD)
+        if ',{' in auxD: #Metodo AFD
+            for i in range(len(auxArrayD)):
+                auxStringStates=auxArrayD[i][:auxArrayD[i].find(',{')] 
+                auxArrayStringStates=auxStringStates.split(',')
+                tupleStates=(auxArrayStringStates[0],auxArrayStringStates[1])
+                auxString=auxArrayD[i][auxArrayD[i].find('{')+1:auxArrayD[i].find('}')]
+                #print(tupleStates)
+                auxArrayString=auxString.split(',')
+                D[tupleStates]=auxArrayString
+        else: #Metodo FNA
+            for i in range(len(auxArrayD)):
+                auxArrayStringStates=auxArrayD[i].split(',')
+                tupleStates=(auxArrayStringStates[0],auxArrayStringStates[1])
+                D[tupleStates]=auxArrayStringStates[2]
+                
+
+            print(auxArrayStringStates)
+                
+
+        line = entrada.readline()
+        q0 = line[line.find('=')+2:]
+        
+        return self.validate(cadena,q0)
+
+    def validate(self,  cadena, actualState):
+        if cadena == '':
+            return actualState in F
+        else:
+            symbol = cadena[0:1]
+            # print(symbol)
+            # print(cadena)
+            # print(D)
+            if(actualState, symbol) in D:
+                new_cadena = cadena[1:]
+                #print(new_cadena)
+                transitions = D[(actualState, symbol)]
+                #print(transitions)
+                for transition in transitions:
+                    if self.validate(new_cadena, transition):
+                        return True
+            return False
+
+
 def main():
     pilin = automata()
-    print(pilin.get_automata('gritó'))
+    print(pilin.beginValidate('1001'))
 
 
 if __name__ == "__main__":
     main()
-
