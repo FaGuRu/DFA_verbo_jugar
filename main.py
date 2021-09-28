@@ -33,9 +33,9 @@ entry.insert(0,cadena)
 
 #Funciones
 def get_cadena():
-    print(entry.get())
+    #print(entry.get())
     automataObj=aut()
-    print(automataObj.beginValidate(entry.get()))
+    #print(automataObj.beginValidate(entry.get()))
     if(automataObj.beginValidate(entry.get())==True):
         datos_label = tkinter.Label(
     window, text="Cadena Valida", font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
@@ -53,3 +53,4 @@ get_button = tkinter.Button(window, text="Validar cadena", font=(
 
 
 window.mainloop()
+   
