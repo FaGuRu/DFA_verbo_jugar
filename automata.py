@@ -60,6 +60,7 @@ class automata:
                 
 
         line = entrada.readline()
+        line=line.replace(' ','')
         q0 = line[line.find('=')+1:]
         
         return self.validate(cadena,q0)
@@ -72,7 +73,7 @@ class automata:
             print(symbol)
             print(cadena)
             print(actualState)
-            print(D)
+            #print(D)
             if(actualState, symbol) in D:
                 new_cadena = cadena[1:]
                 print(new_cadena)
