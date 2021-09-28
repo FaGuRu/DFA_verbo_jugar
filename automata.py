@@ -60,6 +60,8 @@ class automata:
                 
 
         line = entrada.readline()
+        line=line.replace('{','')
+        line=line.replace('}','')
         line=line.replace(' ','')
         q0 = line[line.find('=')+1:]
         
