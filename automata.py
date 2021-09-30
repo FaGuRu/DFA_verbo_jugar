@@ -34,7 +34,7 @@ class automata:
         #print(repr(auxD))
         auxD=auxD.replace('),(',';')
         auxD=auxD.replace('(','')
-        auxD=auxD.replace('epsilon',',git a,')
+        auxD=auxD.replace('epsilon',', ,')
         #print(auxD)
         auxArrayD=auxD.split(';')
         #print(auxArrayD)
