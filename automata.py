@@ -29,11 +29,12 @@ class automata:
         #print(auxQ)
         #print(auxF)
         auxD = line[line.find('{')+1:line.find(')}')]
-        
+        auxD=auxD.replace(', ,','epsilon')
         auxD=auxD.replace(' ','')
         #print(repr(auxD))
         auxD=auxD.replace('),(',';')
         auxD=auxD.replace('(','')
+        auxD=auxD.replace('epsilon',',git a,')
         #print(auxD)
         auxArrayD=auxD.split(';')
         #print(auxArrayD)
@@ -72,10 +73,10 @@ class automata:
             return actualState in F
         else:
             symbol = cadena[0:1]
-            print(symbol)
-            print(cadena)
-            print(actualState)
-            #print(D)
+            #print(symbol)
+            #print(cadena)
+            #print(actualState)
+            print(D)
             if(actualState, symbol) in D:
                 new_cadena = cadena[1:]
                 print(new_cadena)
@@ -88,8 +89,8 @@ class automata:
 
 
 # def main():
-#     # pilin = automata()
-#     # #print(pilin.beginValidate('1001'))
+#     # aut = automata()
+#     # #aut(aut.beginValidate('1001'))
 
 
 # if __name__ == "__main__":
