@@ -5,11 +5,18 @@ class automata:
     F = []
     q0=""
     D = {}
+    nombreAutomata=""
+
+    def __init__(self,nombreTxt):
+        self.nombreAutomata=nombreTxt
+        
+
 
     def beginValidate(self,cadena):
         global Q,S,F,q0,D
         D = {}
-        entrada = open("tarjeta_existente.txt", "r")
+        print("Iniciando validacion")
+        entrada = open(self.nombreAutomata, "r")
         line = entrada.readline()
         auxS = line[line.find('{')+1:line.find('}')]
         auxS=auxS.replace(' ','')
@@ -69,13 +76,15 @@ class automata:
         return self.validate(cadena,q0)
 
     def validate(self,  cadena, actualState):
+        print(self.nombreAutomata)
         if cadena == '':
+            print("finalizada")
             return actualState in F
         else:
             symbol = cadena[0:1]
-            #print(symbol)
-            #print(cadena)
-            #print(actualState)
+            # print(symbol)
+            # print(cadena)
+            # print(actualState)
             print(D)
             if(actualState, symbol) in D:
                 new_cadena = cadena[1:]
