@@ -97,7 +97,7 @@ def get_cadena():
 datos_label = tkinter.Label(
     window, text="Inserte una cadena con grafo importado", font=('Impact', 16), bg="#A6D6D6").place(x=235, y=0)
 
-datos_label = tkinter.Label(window, textvariable=cadena, font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
+datos_label = tkinter.Label(window, textvariable=cadena, font=('Impact', 17), bg="#A6D6D6").place(x=285, y=510)
 
 get_button = tkinter.Button(window, text="Validar cadena", font=(
     'Lucida Console', 10), bg="#537EC5", borderwidth=5, relief="raised", command=get_cadena).place(x=446, y=42, width=125, height=36)
