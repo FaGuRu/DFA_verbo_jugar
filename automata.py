@@ -9,7 +9,7 @@ class automata:
     def beginValidate(self,cadena):
         global Q,S,F,q0,D
         D = {}
-        entrada = open("entrada.txt", "r")
+        entrada = open("tarjeta_existente.txt", "r")
         line = entrada.readline()
         auxS = line[line.find('{')+1:line.find('}')]
         auxS=auxS.replace(' ','')

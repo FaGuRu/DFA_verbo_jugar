@@ -38,10 +38,10 @@ def get_cadena():
     #print(automataObj.beginValidate(entry.get()))
     if(automataObj.beginValidate(entry.get())==True):
         datos_label = tkinter.Label(
-    window, text="Cadena Valida", font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
+    window, text="Tarjeta Existente", font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
     else:
         datos_label_2 = tkinter.Label(
-    window, text="Cadena no Valida", font=('Impact', 14), bg="#A6D6D6").place(x=320, y=510)
+    window, text="Numero no Valida", font=('Impact', 14), bg="#A6D6D6").place(x=320, y=510)
 
 
 #Labels y botones
