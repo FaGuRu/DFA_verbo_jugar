@@ -3,6 +3,7 @@ import tkinter.filedialog
 from tkinter.constants import END
 from tkinter import filedialog
 from tkinter import Frame, Toplevel, ttk
+import tkinter
 from typing import Text
 from automata import automata as aut
 
@@ -61,38 +62,42 @@ Credito_8 = ["45552925","45552927","54705050","54709681"]
 
 #Variables
 
+cadena=tkinter.StringVar()
+
 #Funciones
 def get_cadena():
     #print(entry.get())
     automataExist=aut("tarjeta_existente.txt")
     automataVisa=aut("comprobar_visa.txt")
     automataMaster=aut("comprobar_mastercard.txt")
-    cadena=""
+    cadenaString=""
     #print(automataObj.beginValidate(entry.get()))
     if(automataExist.beginValidate(entry.get())==True):
-        cadena=cadena+"Tarjeta"
+        cadenaString=cadenaString+"Tarjeta"
         print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         if(automataVisa.beginValidate(entry.get())):
-            cadena=cadena+" Visa"
+            cadenaString=cadenaString+" Visa"
         elif(automataMaster.beginValidate(entry.get())):
-            cadena=cadena+" Mastercard"
+            cadenaString=cadenaString+" Mastercard"
         else:
-            cadena=cadena+" Diferente"
+            cadenaString=cadenaString+" Diferente"
         
         if(entry.get()[0:6] in Credito or entry.get()[0:6] in Credito_8):
-            cadena=cadena +" Credito"
+            cadenaString=cadenaString +" Credito"
         else:
-            cadena=cadena +" Debito"
-        datos_label = tkinter.Label(window, text=cadena, font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
-
+            cadenaString=cadenaString +" Debito"
+        
     else:
-        datos_label_2 = tkinter.Label(
-    window, text="Numero no Valido", font=('Impact', 14), bg="#A6D6D6").place(x=320, y=510)
+        cadenaString="Numero no valido"
+
+    cadena.set(cadenaString)
 
 
 #Labels y botones
 datos_label = tkinter.Label(
     window, text="Inserte una cadena con grafo importado", font=('Impact', 16), bg="#A6D6D6").place(x=235, y=0)
+
+datos_label = tkinter.Label(window, textvariable=cadena, font=('Impact', 17), bg="#A6D6D6").place(x=325, y=510)
 
 get_button = tkinter.Button(window, text="Validar cadena", font=(
     'Lucida Console', 10), bg="#537EC5", borderwidth=5, relief="raised", command=get_cadena).place(x=446, y=42, width=125, height=36)
